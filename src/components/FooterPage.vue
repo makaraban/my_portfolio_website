@@ -2,6 +2,7 @@
 
 </script>
 <template>
+
     <!-- Footer -->
     <footer class="bg-dark text-white py-12">
         <div class="container mx-auto px-6">

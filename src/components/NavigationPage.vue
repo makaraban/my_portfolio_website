@@ -72,7 +72,19 @@
     </nav>
     <!-- End Navigation -->
 
+
 </template>
 <style scoped>
 
+  .active_link {
+        color: #3490dc;
+        font-weight: 500;
+        /* text-decoration: underline 2px solid #3490dc; */
+    }
+    .active_link_hidden {
+        background-color: #3490dc;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+    }
 </style>

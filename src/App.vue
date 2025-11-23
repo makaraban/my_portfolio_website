@@ -12,6 +12,7 @@
 </script>
 
 <template>
+
   <!-- NavigationPage -->
   <NavigationPage />
   <!-- End NavigationPage -->
@@ -34,14 +35,4 @@
     font-weight: 400;
     font-style: normal;
   }
-  .active_link {
-        color: #3490dc;
-        font-weight: 500;
-    }
-    .active_link_hidden {
-        background-color: #3490dc;
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 0.25rem;
-    }
 </style>
