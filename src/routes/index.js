@@ -1,15 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import Home from '@/views/HomePage.vue'
-import About from '@/views/AboutPage.vue'
-import Academic from '@/views/AcademicPage.vue'
-import Education from '@/views/EducationPage.vue'
-import Skill from '@/views/SkillPage.vue'
-import Experience from '@/views/Experience.vue'
-import Projects from '@/views/ProjectPage.vue'
-import CurrentJob from '@/views/CurrentJobPage.vue'
-import Contact from '@/views/ContactPage.vue'
-import NotFound from '@/components/NotFoundPage.vue'
+const Home = () => import('@/views/HomePage.vue')
+const About = () => import('@/views/AboutPage.vue')
+const Academic = () => import('@/views/AcademicPage.vue')
+const Education = () => import('@/views/EducationPage.vue')
+const Skill = () => import('@/views/SkillPage.vue')
+const Experience = () => import('@/views/Experience.vue')
+const Projects = () => import('@/views/ProjectPage.vue')
+const CurrentJob = () => import('@/views/CurrentJobPage.vue')
+const Contact = () => import('@/views/ContactPage.vue')
+const NotFound = () => import('@/components/NotFoundPage.vue')
 
 const routes = [
     {

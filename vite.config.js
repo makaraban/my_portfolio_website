@@ -27,5 +27,8 @@ export default defineConfig(({ mode }) => {
         '@': fileURLToPath(new URL('./src', import.meta.url))
       },
     },
+    build: {
+      sourcemap: process.env.NODE_ENV == 'dev' ? true : false,
+    },
   }
 })
