@@ -170,6 +170,8 @@ const en = {
   portfolio: 'Portfolio',
   academics_skills: 'Academics & Skills',
   version: 'Version',
+  not_found_title: 'Page Not Found',
+  not_found_des: 'Sorry, the page you are looking for does not exist or has been removed. Please check your URL or return to the homepage.',
 }
 
 export default en
