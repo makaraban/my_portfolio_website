@@ -164,6 +164,7 @@ const km = {
     go_back: 'ត្រលប់ក្រោយ',
     portfolio: 'ស្នាដៃ',
     academics_skills: 'ការសិក្សា និងជំនាញ',
+    version: 'ជំនាន់',
 
 };
 

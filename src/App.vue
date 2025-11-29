@@ -1,14 +1,8 @@
-<script>
-  import NavigationPage from './components/NavigationPage.vue';
-  import FooterPage from './components/FooterPage.vue';
-  import BackToTop from './components/BackToTop.vue';
-  export default {
-    components: {
-      NavigationPage,
-      FooterPage,
-      BackToTop,
-    }
-  };
+<script setup>
+  import NavigationPage from '@/components/NavigationPage.vue';
+  import FooterPage from '@/components/FooterPage.vue';
+  import BackToTop from '@/components/BackToTop.vue';
+
 </script>
 
 <template>

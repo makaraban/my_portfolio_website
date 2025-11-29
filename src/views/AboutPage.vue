@@ -13,9 +13,9 @@
                         <div class="w-85 h-85 bg-gradient-to-r from-primary-500 to-accent-500 rounded-lg overflow-hidden">
                             <img src="/images/makara.jpg" alt="{{ $t('about_me') }}" class="object-cover" width="410" height="410">
                         </div>
-                        <div class="absolute -top-4 -left-4 bg-white p-3 rounded-lg shadow-md border">
+                        <!-- <div class="absolute -top-4 -left-4 bg-white p-3 rounded-lg shadow-md border">
                             <i class="fas fa-graduation-cap text-primary-500 text-2xl"></i>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="md:w-3/5 md:pl-12">

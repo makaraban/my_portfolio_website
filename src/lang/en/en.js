@@ -169,6 +169,7 @@ const en = {
   go_back: 'Go Back',
   portfolio: 'Portfolio',
   academics_skills: 'Academics & Skills',
+  version: 'Version',
 }
 
 export default en

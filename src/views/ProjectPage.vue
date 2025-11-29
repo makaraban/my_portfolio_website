@@ -1,59 +1,63 @@
-<script>
+<script setup>
+  import { ref, onMounted } from 'vue'
   import axios from 'axios'
-  const API = 'https://api.github.com'
-  export default {
-    data() {
-      return {
-        users: [],
-        repositories: [],
-        loadingRepos: false,
-        errorRepos: null,
-        perPage: 10,
-        loading: false,
-        error: null,
-      }
-    },
-    async mounted() {
-      await this.viewProfile()
-    },
-    methods: {
 
-      // View user profile
-      async viewProfile() {
-        const username = 'makaraban';
-        this.loading = true
-        this.error = null
-        try {
-          const response = await axios.get(`${API}/users/${username}`)
-          this.users = response.data
+  // Environment Variables
+  const API = import.meta.env.VITE_APP_API
 
-        } catch (err) {
-          this.error = err.message
-          console.error('Error fetching user profile:', err)
-        } finally {
-          this.loading = false
-        }
+  // Reactive data
+  const users = ref([])
+  const repositories = ref([])
+  const loadingRepos = ref(false)
+  const errorRepos = ref(null)
+  const perPage = ref(10)
+  const loading = ref(false)
+  const error = ref(null)
+  const username = ref('makaraban')
 
-        // Fetch user repositories
-        this.loadingRepos = true
-          try {
-            const response = await axios.get(`${API}/users/${username}/repos?sort=updated&per_page=100`)
-
-            this.repositories = response.data
-          } catch (err) {
-            console.error('Error fetching repositories:', err)
-          } finally {
-            this.loadingRepos = false
-          }
-      },
-
-      formatDate(dateString) {
-        const options = { year: 'numeric', month: 'short', day: 'numeric' }
-        return new Date(dateString).toLocaleDateString(undefined, options)
-      },
-    },
+  // Methods get formatted date
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'short', day: 'numeric' }
+    return new Date(dateString).toLocaleDateString(undefined, options)
   }
+
+  // Lifecycle
+  onMounted(async () => {
+    await getUserProfile()
+  })
+
+  // View user profile
+  const getUserProfile = async () => {
+
+    loading.value = true
+    error.value = null
+
+    try {
+      const response = await axios.get(`${API}/users/${username.value}`)
+      users.value = response.data
+    } catch (err) {
+      error.value = err.message
+      console.error('Error fetching user profile:', err)
+    } finally {
+      loading.value = false
+    }
+
+    // Fetch user repositories
+    loadingRepos.value = true
+    try {
+      const response = await axios.get(`${API}/users/${username.value}/repos?sort=updated&per_page=${perPage.value}`)
+      repositories.value = response.data
+    } catch (err) {
+      errorRepos.value = err.message
+      console.error('Error fetching repositories:', err)
+    } finally {
+      loadingRepos.value = false
+    }
+  }
+
+
 </script>
+
 <template>
   <!-- Work Experience Section -->
   <section id="experience" class="py-16 md:py-24">
@@ -110,10 +114,6 @@
                             <span class="text-gray-900">{{ users.location }}</span>
                         </div>
                         <div class="flex items-center mb-2">
-                            <i class="fas fa-link mr-2 text-github-text"></i>
-                            <a href="#" class="text-github-blue hover:underline">johndoe.dev</a>
-                        </div>
-                        <div class="flex items-center mb-2">
                             <i class="fas fa-building mr-2 text-github-text"></i>
                             <span class="text-gray-900">{{ users.company }}</span>
                         </div>
@@ -123,34 +123,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- <div class="github-card p-4 mb-4">
-                    <h2 class="font-semibold text-gray-900 mb-3">Highlights</h2>
-                    <div class="space-y-2">
-                        <div class="flex items-center">
-                            <i class="fas fa-medal text-yellow-500 mr-2"></i>
-                            <span class="text-gray-900">Arctic Code Vault Contributor</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-star text-purple-500 mr-2"></i>
-                            <span class="text-gray-900">GitHub Star</span>
-                        </div>
-                        <div class="flex items-center">
-                            <i class="fas fa-code-branch text-green-500 mr-2"></i>
-                            <span class="text-gray-900">Pro</span>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="github-card p-4">
-                    <h2 class="font-semibold text-gray-900 mb-3">Organizations</h2>
-                    <div class="flex space-x-2">
-                        <div class="w-8 h-8 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs font-bold">GD</div>
-                        <div class="w-8 h-8 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">OS</div>
-                        <div class="w-8 h-8 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs font-bold">TC</div>
-                    </div>
-                </div> -->
-
             </div>
 
             <!-- Main Content -->

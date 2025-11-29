@@ -2,7 +2,9 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import languages from './lang/index.js'
 import router from './routes/index.js'
-// import './assets/main.css'
+
+const appTitle = import.meta.env.VITE_APP_TITLE || 'BAN MAKARA';
+document.title = appTitle;
 
 const app = createApp(App)
 app.use(languages)
